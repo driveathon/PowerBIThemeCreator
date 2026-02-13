@@ -1,0 +1,1114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Power BI Advanced Theme Creator</title>
+    <link rel="stylesheet" href="styles.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">
+                <svg class="logo-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="3" y="3" width="7" height="7" rx="1" fill="currentColor" />
+                    <rect x="14" y="3" width="7" height="7" rx="1" fill="currentColor" opacity="0.7" />
+                    <rect x="3" y="14" width="7" height="7" rx="1" fill="currentColor" opacity="0.5" />
+                    <rect x="14" y="14" width="7" height="7" rx="1" fill="currentColor" opacity="0.3" />
+                </svg>
+                <div class="logo-details">
+                    <span class="logo-text">Power BI Theme Creator</span>
+                    <div class="logo-meta">
+                        <span class="version-tag">Version 1.0</span>
+                        <span class="creator-tag">Creator - Adam Porter</span>
+                    </div>
+                </div>
+            </div>
+            <div class="header-actions">
+                <button class="btn btn-secondary" id="shareBtn">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+                        <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+                    </svg>
+                    Share
+                </button>
+                <button class="btn btn-secondary" id="themesBtn">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path
+                            d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                    </svg>
+                    Popular Themes
+                </button>
+                <button class="btn btn-secondary" id="randomizeBtn">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M23 4v6h-6" />
+                        <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10" />
+                    </svg>
+                    Randomize All
+                </button>
+                <button class="btn btn-secondary" id="importBtn">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                        <polyline points="17 8 12 3 7 8" />
+                        <line x1="12" y1="3" x2="12" y2="15" />
+                    </svg>
+                    Import Theme
+                </button>
+                <button class="btn btn-secondary" id="libraryBtn">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+                        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
+                    </svg>
+                    My Library
+                </button>
+                <button class="btn btn-secondary" id="undoBtn" title="Undo (Ctrl+Z)">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 14L4 9l5-5" />
+                        <path d="M4 9h10.5a5.5 5.5 0 0 1 5.5 5.5v0a5.5 5.5 0 0 1-5.5 5.5H11" />
+                    </svg>
+                    Undo
+                </button>
+                <button class="btn btn-secondary" id="redoBtn" title="Redo (Ctrl+Y)">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M15 14l5-5-5-5" />
+                        <path d="M20 9H9.5A5.5 5.5 0 0 0 4 14.5v0A5.5 5.5 0 0 0 9.5 20H13" />
+                    </svg>
+                    Redo
+                </button>
+                <button class="btn btn-primary" id="exportBtn">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                        <polyline points="7 10 12 15 17 10" />
+                        <line x1="12" y1="15" x2="12" y2="3" />
+                    </svg>
+                    Export JSON
+                </button>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <!-- Sidebar Navigation -->
+            <aside class="sidebar">
+                <nav class="nav-menu">
+                    <button class="nav-item active" data-section="general">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <circle cx="12" cy="12" r="3" />
+                            <path
+                                d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z" />
+                        </svg>
+                        General
+                    </button>
+                    <button class="nav-item" data-section="colors" data-preview-target="charts">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <circle cx="13.5" cy="6.5" r="3" />
+                            <circle cx="17.5" cy="10.5" r="3" opacity="0.7" />
+                            <circle cx="8.5" cy="7.5" r="3" opacity="0.5" />
+                            <circle cx="6.5" cy="12.5" r="3" opacity="0.4" />
+                            <path
+                                d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.555C21.965 6.012 17.461 2 12 2z" />
+                        </svg>
+                        Data Colors
+                    </button>
+                    <button class="nav-item" data-section="background" data-preview-target="background">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
+                            <line x1="3" y1="9" x2="21" y2="9" />
+                            <line x1="9" y1="21" x2="9" y2="9" />
+                        </svg>
+                        Background
+                    </button>
+                    <button class="nav-item" data-section="foreground" data-preview-target="text">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M12 3v18" />
+                            <rect x="4" y="6" width="16" height="12" rx="2" />
+                        </svg>
+                        Foreground
+                    </button>
+                    <button class="nav-item" data-section="typography" data-preview-target="typography">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <polyline points="4 7 4 4 20 4 20 7" />
+                            <line x1="9" y1="20" x2="15" y2="20" />
+                            <line x1="12" y1="4" x2="12" y2="20" />
+                        </svg>
+                        Typography
+                    </button>
+                    <button class="nav-item" data-section="visuals" data-preview-target="visuals">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <rect x="3" y="3" width="18" height="18" rx="2" />
+                            <path d="M3 9h18" />
+                            <path d="M9 21V9" />
+                        </svg>
+                        Visual Styles
+                    </button>
+                    <button class="nav-item" data-section="tables" data-preview-target="table">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <rect x="3" y="3" width="18" height="18" rx="2" />
+                            <line x1="3" y1="9" x2="21" y2="9" />
+                            <line x1="3" y1="15" x2="21" y2="15" />
+                            <line x1="9" y1="3" x2="9" y2="21" />
+                            <line x1="15" y1="3" x2="15" y2="21" />
+                        </svg>
+                        Tables & Matrix
+                    </button>
+                    <button class="nav-item" data-section="cards" data-preview-target="kpi">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <rect x="2" y="4" width="20" height="16" rx="2" />
+                            <path d="M7 15h10" />
+                            <path d="M7 11h4" />
+                        </svg>
+                        Cards
+                    </button>
+                    <button class="nav-item" data-section="slicers" data-preview-target="slicers">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <line x1="4" y1="21" x2="4" y2="14" />
+                            <line x1="4" y1="10" x2="4" y2="3" />
+                            <line x1="12" y1="21" x2="12" y2="12" />
+                            <line x1="12" y1="8" x2="12" y2="3" />
+                            <line x1="20" y1="21" x2="20" y2="16" />
+                            <line x1="20" y1="12" x2="20" y2="3" />
+                            <line x1="1" y1="14" x2="7" y2="14" />
+                            <line x1="9" y1="8" x2="15" y2="8" />
+                            <line x1="17" y1="16" x2="23" y2="16" />
+                        </svg>
+                        Slicers
+                    </button>
+                </nav>
+
+                <div class="sidebar-footer">
+                    <button class="btn btn-ghost" id="feedbackBtn">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+                        </svg>
+                        Give Feedback
+                    </button>
+                    <button class="btn btn-ghost" id="sayThanksBtn">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path
+                                d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l8.84-8.84 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+                        </svg>
+                        Say Thanks!
+                    </button>
+                    <button class="btn btn-ghost" id="resetBtn">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" />
+                            <path d="M3 3v5h5" />
+                        </svg>
+                        Reset to Default
+                    </button>
+                </div>
+            </aside>
+
+            <!-- Editor Panel -->
+            <section class="editor-panel">
+                <!-- General Section -->
+                <div class="section-content active" id="section-general">
+                    <h2 class="section-title">General Settings</h2>
+                    <p class="section-description">Configure the basic properties of your Power BI theme.</p>
+
+                    <div class="form-group">
+                        <label class="form-label">Theme Name</label>
+                        <input type="text" class="form-input" id="themeName" value="My Custom Theme"
+                            placeholder="Enter theme name">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Theme Type</label>
+                        <select class="form-select" id="themeType">
+                            <option value="standard">Standard</option>
+                            <option value="dark">Dark Mode</option>
+                            <option value="highContrast">High Contrast</option>
+                        </select>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">First Color (Primary)</label>
+                            <div class="color-picker-wrapper">
+                                <input type="color" class="color-input" id="firstColor" value="#118DFF">
+                                <input type="text" class="color-text" id="firstColorText" value="#118DFF">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Second Color (Secondary)</label>
+                            <div class="color-picker-wrapper">
+                                <input type="color" class="color-input" id="secondColor" value="#12239E">
+                                <input type="text" class="color-text" id="secondColorText" value="#12239E">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Third Color</label>
+                            <div class="color-picker-wrapper">
+                                <input type="color" class="color-input" id="thirdColor" value="#E66C37">
+                                <input type="text" class="color-text" id="thirdColorText" value="#E66C37">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Fourth Color</label>
+                            <div class="color-picker-wrapper">
+                                <input type="color" class="color-input" id="fourthColor" value="#6B007B">
+                                <input type="text" class="color-text" id="fourthColorText" value="#6B007B">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Data Colors Section -->
+                <div class="section-content" id="section-colors">
+                    <h2 class="section-title">Data Colors</h2>
+                    <p class="section-description">Define the color palette used for data series in charts and visuals.
+                    </p>
+
+                    <div class="color-harmony-container"
+                        style="background: linear-gradient(135deg, rgba(17, 141, 255, 0.1), rgba(17, 141, 255, 0.05)); border: 1px solid rgba(17, 141, 255, 0.2);">
+                        <h3 class="subsection-title" style="display: flex; align-items: center; gap: 8px;">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path
+                                    d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z">
+                                </path>
+                                <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                                <line x1="12" y1="22.08" x2="12" y2="12"></line>
+                            </svg>
+                            Magic Theme Generator
+                        </h3>
+                        <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 12px;">
+                            Upload a logo or screenshot to automatically extract a matching color theme.
+                        </p>
+                        <div style="display: flex; gap: 10px;">
+                            <label class="btn btn-secondary btn-full" style="cursor: pointer; position: relative;">
+                                <input type="file" id="logoUpload" accept="image/*"
+                                    style="opacity: 0; position: absolute; top:0; left:0; width: 100%; height: 100%; cursor: pointer;">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                    <polyline points="17 8 12 3 7 8"></polyline>
+                                    <line x1="12" y1="3" x2="12" y2="15"></line>
+                                </svg>
+                                Upload Image
+                            </label>
+                        </div>
+                        <canvas id="logoCanvas" style="display: none;"></canvas>
+                    </div>
+
+                    <div class="color-harmony-container">
+                        <h3 class="subsection-title">Color Harmony Engine</h3>
+                        <div class="harmony-controls">
+                            <div class="form-group">
+                                <label class="form-label">Seed Color</label>
+                                <div class="color-picker-wrapper">
+                                    <input type="color" class="color-input" id="seedColor" value="#118DFF">
+                                    <input type="text" class="color-text" id="seedColorText" value="#118DFF">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Harmony Rule</label>
+                                <select class="form-select" id="harmonyRule">
+                                    <option value="analogous">Analogous</option>
+                                    <option value="monochromatic">Monochromatic</option>
+                                    <option value="triadic">Triadic</option>
+                                    <option value="complementary">Complementary</option>
+                                    <option value="splitComplementary">Split Complementary</option>
+                                    <option value="shades">Shades & Tints</option>
+                                </select>
+                            </div>
+                        </div>
+                        <button class="btn btn-primary btn-full" id="generateHarmonyBtn">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path
+                                    d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" />
+                            </svg>
+                            Generate Harmonized Palette
+                        </button>
+                    </div>
+
+                    <div class="a11y-auditor-container">
+                        <div class="a11y-header">
+                            <h3 class="subsection-title" style="margin: 0;">Accessibility Auditor</h3>
+                            <div style="display: flex; gap: 10px; align-items: center;">
+                                <button class="btn btn-secondary btn-sm" id="autoFixBtn"
+                                    style="padding: 4px 12px; font-size: 0.75rem;">
+                                    Auto-Fix
+                                </button>
+                                <div class="a11y-score" id="a11yScore">Pass</div>
+                            </div>
+                        </div>
+                        <div class="a11y-results" id="a11yResults">
+                            <!-- Accessibility warnings will be inserted here -->
+                        </div>
+                    </div>
+
+                    <div class="color-palette-container">
+                        <div class="palette-header">
+                            <span>Color Palette</span>
+                            <button class="btn btn-small" id="addColorBtn">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <line x1="12" y1="5" x2="12" y2="19" />
+                                    <line x1="5" y1="12" x2="19" y2="12" />
+                                </svg>
+                                Add Color
+                            </button>
+                        </div>
+                        <div class="color-palette" id="colorPalette">
+                            <!-- Colors will be added dynamically -->
+                        </div>
+                    </div>
+
+                    <div class="color-harmony-container" style="margin-top: 20px;">
+                        <h3 class="subsection-title">Advanced Gradient Designer</h3>
+                        <p class="section-description" style="margin-bottom: 12px;">Define diverging data colors for
+                            heatmaps and conditional formatting.</p>
+
+                        <div class="gradient-preview-bar" id="gradientPreview"
+                            style="height: 24px; border-radius: 4px; margin-bottom: 16px; background: linear-gradient(to right, #D64550, #F5F5F5, #009966); border: 1px solid var(--border-color);">
+                        </div>
+
+                        <div class="form-row" style="gap: 10px;">
+                            <div class="form-group" style="flex: 1;">
+                                <label class="form-label" style="font-size: 0.75rem;">Minimum (Bad)</label>
+                                <div class="color-picker-wrapper">
+                                    <input type="color" class="color-input" id="badColor" value="#D64550">
+                                    <input type="text" class="color-text" id="badColorText" value="#D64550"
+                                        style="width: 100%;">
+                                </div>
+                            </div>
+                            <div class="form-group" style="flex: 1;">
+                                <label class="form-label" style="font-size: 0.75rem;">Center (Neutral)</label>
+                                <div class="color-picker-wrapper">
+                                    <input type="color" class="color-input" id="neutralColor" value="#F5F5F5">
+                                    <input type="text" class="color-text" id="neutralColorText" value="#F5F5F5"
+                                        style="width: 100%;">
+                                </div>
+                            </div>
+                            <div class="form-group" style="flex: 1;">
+                                <label class="form-label" style="font-size: 0.75rem;">Maximum (Good)</label>
+                                <div class="color-picker-wrapper">
+                                    <input type="color" class="color-input" id="goodColor" value="#009966">
+                                    <input type="text" class="color-text" id="goodColorText" value="#009966"
+                                        style="width: 100%;">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="preset-palettes">
+                        <h3 class="subsection-title">Preset Palettes</h3>
+                        <div class="preset-grid">
+                            <button class="preset-btn" data-preset="default">
+                                <div class="preset-colors">
+                                    <span style="background:#118DFF"></span>
+                                    <span style="background:#12239E"></span>
+                                    <span style="background:#E66C37"></span>
+                                    <span style="background:#6B007B"></span>
+                                    <span style="background:#E044A7"></span>
+                                </div>
+                                <span class="preset-name">Default</span>
+                            </button>
+                            <button class="preset-btn" data-preset="professional">
+                                <div class="preset-colors">
+                                    <span style="background:#2E4057"></span>
+                                    <span style="background:#048A81"></span>
+                                    <span style="background:#54C6EB"></span>
+                                    <span style="background:#8EE3EF"></span>
+                                    <span style="background:#F7A072"></span>
+                                </div>
+                                <span class="preset-name">Professional</span>
+                            </button>
+                            <button class="preset-btn" data-preset="vibrant">
+                                <div class="preset-colors">
+                                    <span style="background:#FF6B6B"></span>
+                                    <span style="background:#4ECDC4"></span>
+                                    <span style="background:#45B7D1"></span>
+                                    <span style="background:#96CEB4"></span>
+                                    <span style="background:#FFEAA7"></span>
+                                </div>
+                                <span class="preset-name">Vibrant</span>
+                            </button>
+                            <button class="preset-btn" data-preset="corporate">
+                                <div class="preset-colors">
+                                    <span style="background:#003F5C"></span>
+                                    <span style="background:#2F4B7C"></span>
+                                    <span style="background:#665191"></span>
+                                    <span style="background:#A05195"></span>
+                                    <span style="background:#D45087"></span>
+                                </div>
+                                <span class="preset-name">Corporate</span>
+                            </button>
+                            <button class="preset-btn" data-preset="nature">
+                                <div class="preset-colors">
+                                    <span style="background:#2D5016"></span>
+                                    <span style="background:#4A7C23"></span>
+                                    <span style="background:#8BC34A"></span>
+                                    <span style="background:#CDDC39"></span>
+                                    <span style="background:#795548"></span>
+                                </div>
+                                <span class="preset-name">Nature</span>
+                            </button>
+                            <button class="preset-btn" data-preset="sunset">
+                                <div class="preset-colors">
+                                    <span style="background:#FF5E5B"></span>
+                                    <span style="background:#FF9E4A"></span>
+                                    <span style="background:#FFDC5E"></span>
+                                    <span style="background:#A855F7"></span>
+                                    <span style="background:#6366F1"></span>
+                                </div>
+                                <span class="preset-name">Sunset</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Background Section -->
+                <div class="section-content" id="section-background">
+                    <h2 class="section-title">Background Settings</h2>
+                    <p class="section-description">Configure the background colors for your report pages and visuals.
+                    </p>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Page Background</label>
+                            <div class="color-picker-wrapper">
+                                <input type="color" class="color-input" id="pageBackground" value="#FFFFFF">
+                                <input type="text" class="color-text" id="pageBackgroundText" value="#FFFFFF">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Visual Background</label>
+                            <div class="color-picker-wrapper">
+                                <input type="color" class="color-input" id="visualBackground" value="#FFFFFF">
+                                <input type="text" class="color-text" id="visualBackgroundText" value="#FFFFFF">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Visual Background Transparency (%)</label>
+                            <div class="slider-wrapper">
+                                <input type="range" class="form-slider" id="visualBackgroundTransparency" min="0"
+                                    max="100" value="0">
+                                <span class="slider-value" id="visualBackgroundTransparencyValue">0%</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Table Accent Color</label>
+                        <div class="color-picker-wrapper">
+                            <input type="color" class="color-input" id="tableAccent" value="#118DFF">
+                            <input type="text" class="color-text" id="tableAccentText" value="#118DFF">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Foreground Section -->
+                <div class="section-content" id="section-foreground">
+                    <h2 class="section-title">Foreground Settings</h2>
+                    <p class="section-description">Configure text colors and foreground elements.</p>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Primary Text Color</label>
+                            <div class="color-picker-wrapper">
+                                <input type="color" class="color-input" id="foreground" value="#252423">
+                                <input type="text" class="color-text" id="foregroundText" value="#252423">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Secondary Text Color</label>
+                            <div class="color-picker-wrapper">
+                                <input type="color" class="color-input" id="foregroundSecondary" value="#605E5C">
+                                <input type="text" class="color-text" id="foregroundSecondaryText" value="#605E5C">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Hyperlink Color</label>
+                            <div class="color-picker-wrapper">
+                                <input type="color" class="color-input" id="hyperlink" value="#118DFF">
+                                <input type="text" class="color-text" id="hyperlinkText" value="#118DFF">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Good Color (Positive)</label>
+                            <div class="color-picker-wrapper">
+                                <input type="color" class="color-input" id="good" value="#107C10">
+                                <input type="text" class="color-text" id="goodText" value="#107C10">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Neutral Color</label>
+                            <div class="color-picker-wrapper">
+                                <input type="color" class="color-input" id="neutral" value="#D83B01">
+                                <input type="text" class="color-text" id="neutralText" value="#D83B01">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Bad Color (Negative)</label>
+                            <div class="color-picker-wrapper">
+                                <input type="color" class="color-input" id="bad" value="#E81123">
+                                <input type="text" class="color-text" id="badText" value="#E81123">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Typography Section -->
+                <div class="section-content" id="section-typography">
+                    <h2 class="section-title">Typography</h2>
+                    <p class="section-description">Configure fonts and text styles used throughout your report.</p>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Primary Font Family</label>
+                            <select class="form-select" id="fontFamily">
+                                <option value="Segoe UI">Segoe UI</option>
+                                <option value="Arial">Arial</option>
+                                <option value="Calibri">Calibri</option>
+                                <option value="Tahoma">Tahoma</option>
+                                <option value="Verdana">Verdana</option>
+                                <option value="Georgia">Georgia</option>
+                                <option value="Times New Roman">Times New Roman</option>
+                                <option value="Trebuchet MS">Trebuchet MS</option>
+                                <option value="DIN">DIN</option>
+                                <option value="Roboto">Roboto</option>
+                                <option value="Open Sans">Open Sans</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Secondary Font Family</label>
+                            <select class="form-select" id="fontFamilySecondary">
+                                <option value="Segoe UI Light">Segoe UI Light</option>
+                                <option value="Segoe UI">Segoe UI</option>
+                                <option value="Arial">Arial</option>
+                                <option value="Calibri">Calibri</option>
+                                <option value="DIN Light">DIN Light</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <h3 class="subsection-title">Text Classes</h3>
+
+                    <div class="text-class-group">
+                        <div class="text-class-header">
+                            <span class="text-class-name">Title</span>
+                            <span class="text-class-preview" id="titlePreview"
+                                style="font-size: 12pt; font-weight: bold;">Sample Title</span>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label">Font Size (pt)</label>
+                                <input type="number" class="form-input" id="titleFontSize" value="12" min="6" max="72">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Font Color</label>
+                                <div class="color-picker-wrapper">
+                                    <input type="color" class="color-input" id="titleColor" value="#252423">
+                                    <input type="text" class="color-text" id="titleColorText" value="#252423">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="text-class-group">
+                        <div class="text-class-header">
+                            <span class="text-class-name">Header</span>
+                            <span class="text-class-preview" id="headerPreview"
+                                style="font-size: 12pt; font-weight: 600;">Sample Header</span>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label">Font Size (pt)</label>
+                                <input type="number" class="form-input" id="headerFontSize" value="12" min="6" max="72">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Font Color</label>
+                                <div class="color-picker-wrapper">
+                                    <input type="color" class="color-input" id="headerColor" value="#252423">
+                                    <input type="text" class="color-text" id="headerColorText" value="#252423">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="text-class-group">
+                        <div class="text-class-header">
+                            <span class="text-class-name">Callout</span>
+                            <span class="text-class-preview" id="calloutPreview"
+                                style="font-size: 45pt; font-weight: 300;">123</span>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label">Font Size (pt)</label>
+                                <input type="number" class="form-input" id="calloutFontSize" value="45" min="6"
+                                    max="120">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Font Color</label>
+                                <div class="color-picker-wrapper">
+                                    <input type="color" class="color-input" id="calloutColor" value="#252423">
+                                    <input type="text" class="color-text" id="calloutColorText" value="#252423">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Visual Styles Section -->
+                <div class="section-content" id="section-visuals">
+                    <h2 class="section-title">Visual Styles</h2>
+                    <p class="section-description">Configure default styling for charts and visuals.</p>
+
+                    <div class="color-harmony-container"
+                        style="background: linear-gradient(135deg, rgba(255, 209, 102, 0.1), rgba(255, 209, 102, 0.05)); border: 1px solid rgba(255, 209, 102, 0.2); margin-bottom: 24px;">
+                        <h3 class="subsection-title" style="display: flex; align-items: center; gap: 8px;">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path
+                                    d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z">
+                                </path>
+                            </svg>
+                            Magic Polish Presets
+                        </h3>
+                        <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 12px;">
+                            One-click styling packages to instantly professionalize your report.
+                        </p>
+                        <div style="display: flex; gap: 10px;">
+                            <button class="btn btn-secondary btn-sm" onclick="applyMagicPolish('flat')"
+                                style="flex: 1;">Minimal Flat</button>
+                            <button class="btn btn-secondary btn-sm" onclick="applyMagicPolish('soft')"
+                                style="flex: 1;">Modern Soft</button>
+                            <button class="btn btn-secondary btn-sm" onclick="applyMagicPolish('glass')"
+                                style="flex: 1;">Glassmorphism</button>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Visual Border</label>
+                        <div class="toggle-group">
+                            <label class="toggle">
+                                <input type="checkbox" id="visualBorder">
+                                <span class="toggle-slider"></span>
+                            </label>
+                            <span class="toggle-label">Show visual borders</span>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Border Color</label>
+                            <div class="color-picker-wrapper">
+                                <input type="color" class="color-input" id="borderColor" value="#E6E6E6">
+                                <input type="text" class="color-text" id="borderColorText" value="#E6E6E6">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Border Radius (px)</label>
+                            <input type="number" class="form-input" id="borderRadius" value="0" min="0" max="30">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Drop Shadow</label>
+                        <div class="toggle-group">
+                            <label class="toggle">
+                                <input type="checkbox" id="dropShadow">
+                                <span class="toggle-slider"></span>
+                            </label>
+                            <span class="toggle-label">Enable drop shadow on visuals</span>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Shadow Color</label>
+                            <div class="color-picker-wrapper">
+                                <input type="color" class="color-input" id="shadowColor" value="#000000">
+                                <input type="text" class="color-text" id="shadowColorText" value="#000000">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Shadow Position</label>
+                            <select class="form-select" id="shadowPosition">
+                                <option value="OuterTop">Top</option>
+                                <option value="OuterBottom" selected>Bottom</option>
+                                <option value="OuterLeft">Left</option>
+                                <option value="OuterRight">Right</option>
+                                <option value="InnerTop">Inner Top</option>
+                                <option value="InnerBottom">Inner Bottom</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <h3 class="subsection-title">Premium Effects</h3>
+                    <div class="form-row">
+                        <div class="form-group checkbox-group">
+                            <input type="checkbox" id="glassMode">
+                            <label for="glassMode" class="form-label">Glassmorphism (Frosted)</label>
+                        </div>
+                        <div class="form-group checkbox-group">
+                            <input type="checkbox" id="gradientTitles">
+                            <label for="gradientTitles" class="form-label">Gradient Header Backgrounds</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tables & Matrix Section -->
+                <div class="section-content" id="section-tables">
+                    <h2 class="section-title">Tables & Matrix</h2>
+                    <p class="section-description">Configure styling for table and matrix visuals.</p>
+
+                    <h3 class="subsection-title">Grid Settings</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Grid Color</label>
+                            <div class="color-picker-wrapper">
+                                <input type="color" class="color-input" id="gridColor" value="#E6E6E6">
+                                <input type="text" class="color-text" id="gridColorText" value="#E6E6E6">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Grid Weight (px)</label>
+                            <input type="number" class="form-input" id="gridWeight" value="1" min="0" max="5">
+                        </div>
+                    </div>
+
+                    <h3 class="subsection-title">Row Settings</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Row Padding (px)</label>
+                            <input type="number" class="form-input" id="rowPadding" value="3" min="0" max="20">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Alternate Row Color</label>
+                            <div class="color-picker-wrapper">
+                                <input type="color" class="color-input" id="alternateRowColor" value="#F5F5F5">
+                                <input type="text" class="color-text" id="alternateRowColorText" value="#F5F5F5">
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3 class="subsection-title">Header Settings</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Header Background</label>
+                            <div class="color-picker-wrapper">
+                                <input type="color" class="color-input" id="tableHeaderBackground" value="#FFFFFF">
+                                <input type="text" class="color-text" id="tableHeaderBackgroundText" value="#FFFFFF">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Header Text Color</label>
+                            <div class="color-picker-wrapper">
+                                <input type="color" class="color-input" id="tableHeaderColor" value="#252423">
+                                <input type="text" class="color-text" id="tableHeaderColorText" value="#252423">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Header Font Size (pt)</label>
+                        <input type="number" class="form-input" id="tableHeaderFontSize" value="9" min="6" max="24">
+                    </div>
+                </div>
+
+                <!-- Cards Section -->
+                <div class="section-content" id="section-cards">
+                    <h2 class="section-title">Cards</h2>
+                    <p class="section-description">Configure styling for card and multi-row card visuals.</p>
+
+                    <h3 class="subsection-title">Callout Value</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Font Size (pt)</label>
+                            <input type="number" class="form-input" id="cardCalloutFontSize" value="45" min="12"
+                                max="100">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Color</label>
+                            <div class="color-picker-wrapper">
+                                <input type="color" class="color-input" id="cardCalloutColor" value="#118DFF">
+                                <input type="text" class="color-text" id="cardCalloutColorText" value="#118DFF">
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3 class="subsection-title">Category Label</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Font Size (pt)</label>
+                            <input type="number" class="form-input" id="cardCategoryFontSize" value="12" min="6"
+                                max="36">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Color</label>
+                            <div class="color-picker-wrapper">
+                                <input type="color" class="color-input" id="cardCategoryColor" value="#605E5C">
+                                <input type="text" class="color-text" id="cardCategoryColorText" value="#605E5C">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slicers Section -->
+                <div class="section-content" id="section-slicers">
+                    <h2 class="section-title">Slicers</h2>
+                    <p class="section-description">Configure styling for slicer visuals.</p>
+
+                    <h3 class="subsection-title">Header</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Font Size (pt)</label>
+                            <input type="number" class="form-input" id="slicerHeaderFontSize" value="10" min="6"
+                                max="24">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Color</label>
+                            <div class="color-picker-wrapper">
+                                <input type="color" class="color-input" id="slicerHeaderColor" value="#000000">
+                                <input type="text" class="color-text" id="slicerHeaderColorText" value="#000000">
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3 class="subsection-title">Items</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Font Size (pt)</label>
+                            <input type="number" class="form-input" id="slicerItemFontSize" value="10" min="6" max="24">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Color</label>
+                            <div class="color-picker-wrapper">
+                                <input type="color" class="color-input" id="slicerItemColor" value="#555555">
+                                <input type="text" class="color-text" id="slicerItemColorText" value="#555555">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Selection Color</label>
+                            <div class="color-picker-wrapper">
+                                <input type="color" class="color-input" id="slicerSelectionColor" value="#118DFF">
+                                <input type="text" class="color-text" id="slicerSelectionColorText" value="#118DFF">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Hover Color</label>
+                            <div class="color-picker-wrapper">
+                                <input type="color" class="color-input" id="slicerHoverColor" value="#E0E0E0">
+                                <input type="text" class="color-text" id="slicerHoverColorText" value="#E0E0E0">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Preview Panel -->
+            <aside class="preview-panel">
+                <div class="preview-header">
+                    <div style="display: flex; gap: 8px; align-items: center;">
+                        <div style="display: flex; gap: 6px;">
+                            <div
+                                style="width: 10px; height: 10px; border-radius: 50%; background: #FF5F57; opacity: 0.8;">
+                            </div>
+                            <div
+                                style="width: 10px; height: 10px; border-radius: 50%; background: #FFBD2E; opacity: 0.8;">
+                            </div>
+                            <div
+                                style="width: 10px; height: 10px; border-radius: 50%; background: #28C841; opacity: 0.8;">
+                            </div>
+                        </div>
+                        <h3 style="margin-left: 12px; font-size: 0.85rem; opacity: 0.6; font-weight: 500;">Report
+                            Workspace</h3>
+                    </div>
+                    <div class="header-controls" style="display: flex; gap: 12px; align-items: center;">
+                        <div class="simulator-control"
+                            style="display: flex; gap: 8px; align-items: center; white-space: nowrap;">
+                            <label for="reportScenario" class="form-label"
+                                style="margin:0; font-size: 0.75rem; opacity: 0.7;">Layout:</label>
+                            <select id="reportScenario" class="form-select"
+                                style="padding: 2px 8px; font-size: 0.75rem; width: auto; min-width: 140px;">
+                                <option value="executive">Executive Summary</option>
+                                <option value="sales">Sales Performance</option>
+                                <option value="inventory">Inventory Analysis</option>
+                            </select>
+                        </div>
+                        <div class="simulator-control"
+                            style="display: flex; gap: 8px; align-items: center; white-space: nowrap;">
+                            <label for="visionSimulator" class="form-label"
+                                style="margin: 0; font-size: 0.75rem; opacity: 0.7;">Vision:</label>
+                            <select id="visionSimulator" class="form-select"
+                                style="padding: 2px 8px; font-size: 0.75rem; width: auto;">
+                                <option value="none">Normal</option>
+                                <option value="protanopia">Protanopia</option>
+                                <option value="deuteranopia">Deuteranopia</option>
+                                <option value="tritanopia">Tritanopia</option>
+                                <option value="achromatopsia">Grayscale</option>
+                            </select>
+                        </div>
+                        <button class="btn btn-secondary" id="mobilePreviewToggle" title="Toggle Mobile Preview"
+                            style="padding: 2px 8px; font-size: 0.75rem; display: flex; align-items: center; gap: 4px;">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
+                                <line x1="12" y1="18" x2="12" y2="18"></line>
+                            </svg>
+                            Mobile
+                        </button>
+                    </div>
+                </div>
+
+                <div class="visual-preview-header">
+                    <div class="preview-tabs">
+                        <button class="preview-tab active" data-preview="visual">Visual Preview</button>
+                        <button class="preview-tab" data-preview="json">JSON Output</button>
+                    </div>
+
+                </div>
+
+                <div class="preview-content preview-canvas" id="visualPreview">
+                    <div class="preview-report active" id="previewReport">
+                        <!-- Dynamic Layouts will be inserted here -->
+                    </div>
+                </div>
+
+                <div class="preview-content hidden" id="jsonPreview">
+                    <div class="json-actions">
+                        <button class="btn btn-secondary btn-sm" id="copyJsonBtn">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2">
+                                </path>
+                                <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
+                            </svg>
+                            Copy JSON
+                        </button>
+                    </div>
+                    <pre class="json-display" id="jsonOutput"></pre>
+                </div>
+            </aside>
+        </main>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">
+        <span class="toast-message"></span>
+    </div>
+
+    <!-- Import Modal -->
+    <div class="modal" id="importModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Import Theme</h3>
+                <button class="modal-close" id="closeImportModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>Paste your Power BI theme JSON below:</p>
+                <textarea class="modal-textarea" id="importTextarea" placeholder='{"name": "My Theme", ...}'></textarea>
+                <div id="importValidationResults" class="validation-results hidden"></div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="cancelImport">Cancel</button>
+                <button class="btn btn-primary" id="confirmImport">Import</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Themes Modal -->
+    <div class="modal" id="themesModal">
+        <div class="modal-content themes-modal-content">
+            <div class="modal-header">
+                <h3>Popular Themes</h3>
+                <button class="modal-close" id="closeThemesModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="themes-grid" id="popularThemesGrid">
+                    <!-- Themes will be added dynamically -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Library Modal -->
+    <div class="modal" id="libraryModal">
+        <div class="modal-content" style="max-width: 900px; width: 90%;">
+            <div class="modal-header">
+                <h3>My Theme Library</h3>
+                <button class="modal-close" id="closeLibraryModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="library-actions" style="margin-bottom: 20px; display: flex; justify-content: flex-end;">
+                    <button class="btn btn-primary" id="saveCurrentToLibraryBtn">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z" />
+                            <polyline points="17 21 17 13 7 13 7 21" />
+                            <polyline points="7 3 7 8 15 8" />
+                        </svg>
+                        Save Current Theme
+                    </button>
+                </div>
+                <div id="libraryGrid" class="themes-grid">
+                    <!-- Library themes will be added dynamically -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <input type="file" id="fileInput" accept=".json" style="display: none;">
+
+    <!-- Color Blindness Filters -->
+    <svg style="display: none;">
+        <defs>
+            <filter id="protanopia">
+                <feColorMatrix type="matrix"
+                    values="0.567, 0.433, 0, 0, 0, 0.558, 0.442, 0, 0, 0, 0, 0.242, 0.758, 0, 0, 0, 0, 0, 1, 0" />
+            </filter>
+            <filter id="deuteranopia">
+                <feColorMatrix type="matrix"
+                    values="0.625, 0.375, 0, 0, 0, 0.7, 0.3, 0, 0, 0, 0, 0.3, 0.7, 0, 0, 0, 0, 0, 1, 0" />
+            </filter>
+            <filter id="tritanopia">
+                <feColorMatrix type="matrix"
+                    values="0.95, 0.05, 0, 0, 0, 0, 0.433, 0.567, 0, 0, 0, 0.475, 0.525, 0, 0, 0, 0, 0, 1, 0" />
+            </filter>
+            <filter id="achromatopsia">
+                <feColorMatrix type="matrix"
+                    values="0.299, 0.587, 0.114, 0, 0, 0.299, 0.587, 0.114, 0, 0, 0.299, 0.587, 0.114, 0, 0, 0, 0, 0, 1, 0" />
+            </filter>
+        </defs>
+    </svg>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
